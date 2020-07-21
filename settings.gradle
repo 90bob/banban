@@ -1,0 +1,23 @@
+/*********************** Project Include ***********************/
+// Web
+include ('picktime-webapp')
+include ('picktime-webapi')
+
+// Admin
+include ('picktime-admin-webapp')
+
+// Crawler
+include('picktime-web-crawler')
+
+// Core
+include('picktime-core')
+include('picktime-core-datasource-jpa')
+include('picktime-core-datasource-mybatis')
+
+/*********************** Project Include ***********************/
+
+/*********************** Create Project ***********************/
+rootProject.children.each { project ->
+    project.projectDir = new File("../${project.name}")
+}
+/*********************** Create Project ***********************/
