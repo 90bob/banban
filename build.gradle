@@ -15,12 +15,6 @@ buildscript {
     }
 }
 
-// Gradle Wrapper
-wrapper {
-    gradleVersion = '5.6.4'
-    distributionUrl = distributionUrl.replace("bin", "all")
-}
-
 allprojects {
     group = 'kr.co.picktime'
     version = '0.0.1'
@@ -68,8 +62,8 @@ project(':picktime-admin-webapp') {
         implementation project(':picktime-core-datasource-mybatis')
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
-        providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     }
 }
 
