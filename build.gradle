@@ -1,7 +1,4 @@
 buildscript {
-    ext {
-        springBootVersion = '2.3.1.RELEASE'
-    }
     repositories {
         mavenCentral()
         maven {
@@ -9,10 +6,14 @@ buildscript {
         }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.1.RELEASE")
         classpath "io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE"
         classpath "org.asciidoctor:asciidoctor-gradle-jvm:2.4.0"
     }
+}
+
+wrapper {
+    gradleVersion = '5.6.4'
 }
 
 allprojects {
@@ -31,12 +32,6 @@ subprojects {
     repositories {
         mavenCentral()
     }
-
-    /*configurations {
-        all {
-            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-        }
-    }*/
 
     dependencies {
         implementation 'mysql:mysql-connector-java'
@@ -61,7 +56,7 @@ project(':picktime-admin-webapp') {
     dependencies {
         implementation project(':picktime-core-datasource-mybatis')
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-        implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+        implementation 'com.github.zhanhb:thymeleaf-layout-dialect:2.4.1'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
         providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     }
@@ -96,10 +91,10 @@ project(":picktime-core-datasource-mybatis") {
     }
 }
 
-project(":picktime-core-datasource-jpa") {
+/*project(":picktime-core-datasource-jpa") {
     apply plugin: 'java-library'
 
     dependencies {
         api 'org.springframework.boot:spring-boot-starter-data-jpa'
     }
-}
+}*/
