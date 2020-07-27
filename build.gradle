@@ -1,4 +1,5 @@
 buildscript {
+    def springBootVersion = '2.3.1.RELEASE'
     repositories {
         mavenCentral()
         maven {
@@ -6,7 +7,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.1.RELEASE")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
         classpath "io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE"
         classpath "org.asciidoctor:asciidoctor-gradle-jvm:2.4.0"
     }
@@ -17,7 +18,6 @@ wrapper {
 }
 
 allprojects {
-    group = 'kr.co.picktime'
     version = '0.0.1'
 }
 
@@ -33,11 +33,23 @@ subprojects {
         mavenCentral()
     }
 
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
     dependencies {
-        implementation 'mysql:mysql-connector-java'
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        compileOnly 'org.projectlombok:lombok'
+        implementation ('org.springframework.boot:spring-boot-starter-web') {
+            exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
+        }
+        implementation 'com.google.code.gson:gson'
+        implementation 'org.projectlombok:lombok'
         testImplementation 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
             exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
         }
@@ -51,35 +63,39 @@ project(':picktime-core') {
 }
 
 project(':picktime-admin-webapp') {
-    apply plugin: 'war'
 
     dependencies {
         implementation project(':picktime-core-datasource-mybatis')
+        implementation 'mysql:mysql-connector-java'
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'com.github.zhanhb:thymeleaf-layout-dialect:2.4.1'
+        implementation 'org.springframework.boot:spring-boot-starter-undertow'
+        //implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+        //implementation 'org.springframework.boot:spring-boot-starter-security'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
-        providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     }
 }
 
 project(':picktime-webapi') {
-    apply plugin: 'war'
     apply plugin: 'org.asciidoctor.jvm.convert'
 
     dependencies {
         implementation project(':picktime-core-datasource-mybatis')
+        implementation 'mysql:mysql-connector-java'
         testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-        providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+        implementation 'org.springframework.boot:spring-boot-starter-undertow'
     }
 }
 
 project(":picktime-web-crawler") {
-    apply plugin: 'war'
 
     dependencies {
+        implementation project(':picktime-core-datasource-mybatis')
         implementation files('libs/instagram-crawler.jar')
+        implementation 'mysql:mysql-connector-java'
         implementation 'org.springframework.boot:spring-boot-starter-batch'
-        providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+        implementation 'org.springframework.boot:spring-boot-starter-undertow'
+        testImplementation 'org.springframework.batch:spring-batch-test'
     }
 }
 
