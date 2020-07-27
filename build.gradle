@@ -65,7 +65,7 @@ project(':picktime-core') {
 project(':picktime-admin-webapp') {
 
     dependencies {
-        implementation project(':picktime-core-datasource-mybatis')
+        implementation project(':picktime-core-mybatis')
         implementation 'mysql:mysql-connector-java'
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'com.github.zhanhb:thymeleaf-layout-dialect:2.4.1'
@@ -80,7 +80,7 @@ project(':picktime-webapi') {
     apply plugin: 'org.asciidoctor.jvm.convert'
 
     dependencies {
-        implementation project(':picktime-core-datasource-mybatis')
+        implementation project(':picktime-core-mybatis')
         implementation 'mysql:mysql-connector-java'
         testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
         implementation 'org.springframework.boot:spring-boot-starter-undertow'
@@ -90,7 +90,7 @@ project(':picktime-webapi') {
 project(":picktime-web-crawler") {
 
     dependencies {
-        implementation project(':picktime-core-datasource-mybatis')
+        implementation project(':picktime-core-mybatis')
         implementation files('libs/instagram-crawler.jar')
         implementation 'mysql:mysql-connector-java'
         implementation 'org.springframework.boot:spring-boot-starter-batch'
@@ -99,7 +99,7 @@ project(":picktime-web-crawler") {
     }
 }
 
-project(":picktime-core-datasource-mybatis") {
+project(":picktime-core-mybatis") {
     apply plugin: 'java-library'
 
     dependencies {

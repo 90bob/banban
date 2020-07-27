@@ -12,8 +12,8 @@ include('picktime-web-crawler')
 
 // Core
 include('picktime-core')
-include('picktime-core-datasource-mybatis')
-//include('picktime-core-datasource-jpa')
+include('picktime-core-mybatis')
+//include('picktime-core-jpa')
 
 
 /*********************** Project Include ***********************/
