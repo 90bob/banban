@@ -58,7 +58,6 @@ subprojects {
 
 project(':picktime-core') {
     dependencies {
-        testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     }
 }
 
