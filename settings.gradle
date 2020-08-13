@@ -7,8 +7,8 @@ include ('picktime-webapi')
 // Admin
 include ('picktime-admin-webapp')
 
-// Crawler
-include('picktime-web-crawler')
+// Batch
+include('picktime-batch')
 
 // Core
 include('picktime-core')
