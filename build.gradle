@@ -61,11 +61,36 @@ project(':picktime-core') {
     }
 }
 
-project(':picktime-admin-webapp') {
+project(":picktime-core-domain") {
+    apply plugin: 'java-library'
 
     dependencies {
         implementation project(':picktime-core')
-        implementation project(':picktime-core-mybatis')
+        api 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3'
+        api 'org.springframework.boot:spring-boot-starter-validation'
+        implementation 'org.mybatis:mybatis-typehandlers-jsr310:1.0.2'
+    }
+}
+
+project(':picktime-app-web-api') {
+    apply plugin: 'org.asciidoctor.jvm.convert'
+
+    dependencies {
+        implementation project(':picktime-core')
+        implementation project(':picktime-core-domain')
+        implementation 'org.apache.httpcomponents:httpclient'
+        implementation 'commons-codec:commons-codec'
+        implementation 'mysql:mysql-connector-java'
+        testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+        implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    }
+}
+
+project(':picktime-app-web-admin') {
+
+    dependencies {
+        implementation project(':picktime-core')
+        implementation project(':picktime-core-domain')
         implementation 'mysql:mysql-connector-java'
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'com.github.zhanhb:thymeleaf-layout-dialect:2.4.1'
@@ -76,23 +101,11 @@ project(':picktime-admin-webapp') {
     }
 }
 
-project(':picktime-webapi') {
-    apply plugin: 'org.asciidoctor.jvm.convert'
+project(":picktime-app-batch") {
 
     dependencies {
         implementation project(':picktime-core')
-        implementation project(':picktime-core-mybatis')
-        implementation 'mysql:mysql-connector-java'
-        testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-        implementation 'org.springframework.boot:spring-boot-starter-undertow'
-    }
-}
-
-project(":picktime-batch") {
-
-    dependencies {
-        implementation project(':picktime-core')
-        implementation project(':picktime-core-mybatis')
+        implementation project(':picktime-core-domain')
         implementation files('libs/instagram-crawler.jar')
         //implementation 'com.github.igor-suhorukov:instagramscraper:2.2'
         implementation 'mysql:mysql-connector-java'
@@ -101,20 +114,3 @@ project(":picktime-batch") {
         testImplementation 'org.springframework.batch:spring-batch-test'
     }
 }
-
-project(":picktime-core-mybatis") {
-    apply plugin: 'java-library'
-
-    dependencies {
-        implementation project(':picktime-core')
-        api 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3'
-    }
-}
-
-/*project(":picktime-core-datasource-jpa") {
-    apply plugin: 'java-library'
-
-    dependencies {
-        api 'org.springframework.boot:spring-boot-starter-data-jpa'
-    }
-}*/

@@ -1,19 +1,18 @@
 /*********************** Project Include ***********************/
 
 // Web
-include ('picktime-webapp')
-include ('picktime-webapi')
+include ('picktime-app-weba')
+include ('picktime-app-web-api')
 
 // Admin
-include ('picktime-admin-webapp')
+include ('picktime-app-web-admin')
 
 // Batch
-include('picktime-batch')
+include('picktime-app-batch')
 
 // Core
 include('picktime-core')
-include('picktime-core-mybatis')
-//include('picktime-core-jpa')
+include('picktime-core-domain')
 
 
 /*********************** Project Include ***********************/
