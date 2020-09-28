@@ -12,6 +12,7 @@ include('picktime-app-batch')
 
 // Core
 include('picktime-core')
+include('picktime-core-payment')
 include('picktime-core-domain')
 
 
@@ -22,3 +23,5 @@ rootProject.children.each { project ->
     project.projectDir = new File("../${project.name}")
 }
 /*********************** Create Project ***********************/
+include 'picktime-core-payment'
+

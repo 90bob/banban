@@ -58,6 +58,19 @@ subprojects {
 
 project(':picktime-core') {
     dependencies {
+        implementation 'org.apache.httpcomponents:httpclient'
+        implementation 'org.springframework.boot:spring-boot-configuration-processor'
+    }
+}
+
+project(':picktime-core-payment') {
+    apply plugin: 'java-library'
+
+    dependencies {
+        implementation project(':picktime-core')
+        implementation project(':picktime-core-domain')
+        implementation 'commons-codec:commons-codec'
+        api 'org.springframework.boot:spring-boot-starter-validation'
     }
 }
 
@@ -78,8 +91,7 @@ project(':picktime-app-web-api') {
     dependencies {
         implementation project(':picktime-core')
         implementation project(':picktime-core-domain')
-        implementation 'org.apache.httpcomponents:httpclient'
-        implementation 'commons-codec:commons-codec'
+        implementation project(':picktime-core-payment')
         implementation 'mysql:mysql-connector-java'
         testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
         implementation 'org.springframework.boot:spring-boot-starter-undertow'
@@ -91,6 +103,8 @@ project(':picktime-app-web-admin') {
     dependencies {
         implementation project(':picktime-core')
         implementation project(':picktime-core-domain')
+        // 결제 취소용
+        implementation project(':picktime-core-payment')
         implementation 'mysql:mysql-connector-java'
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'com.github.zhanhb:thymeleaf-layout-dialect:2.4.1'
