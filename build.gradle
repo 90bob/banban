@@ -112,6 +112,7 @@ project(':picktime-app-web-admin') {
         implementation 'org.springframework.boot:spring-boot-starter-undertow'
         implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
         implementation 'org.springframework.boot:spring-boot-starter-security'
+        implementation 'com.amazonaws:aws-java-sdk-s3:1.11.896'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
     }
 }
