@@ -89,7 +89,9 @@ project(":picktime-core-domain") {
 
 project(':picktime-app-web-api') {
     apply plugin: 'org.asciidoctor.jvm.convert'
-
+    classes.dependsOn ':picktime-core:build'
+    classes.dependsOn ':picktime-core-domain:build'
+    classes.dependsOn ':picktime-core-payment:build'
     dependencies {
         implementation project(':picktime-core')
         implementation project(':picktime-core-domain')
@@ -101,7 +103,9 @@ project(':picktime-app-web-api') {
 }
 
 project(':picktime-app-web-admin') {
-
+    classes.dependsOn ':picktime-core:build'
+    classes.dependsOn ':picktime-core-domain:build'
+    classes.dependsOn ':picktime-core-payment:build'
     dependencies {
         implementation project(':picktime-core')
         implementation project(':picktime-core-domain')
@@ -119,7 +123,8 @@ project(':picktime-app-web-admin') {
 }
 
 project(":picktime-app-batch") {
-
+    classes.dependsOn ':picktime-core:build'
+    classes.dependsOn ':picktime-core-domain:build'
     dependencies {
         implementation project(':picktime-core')
         implementation project(':picktime-core-domain')
