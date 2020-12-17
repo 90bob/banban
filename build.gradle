@@ -71,6 +71,7 @@ project(':picktime-core') {
         implementation 'org.apache.httpcomponents:httpclient'
         implementation 'org.springframework.boot:spring-boot-configuration-processor'
         implementation 'javax.servlet:javax.servlet-api:4.0.1'
+        implementation 'org.springframework.security:spring-security-core'
     }
 }
 
@@ -110,7 +111,6 @@ project(':picktime-app-web-api') {
         implementation 'mysql:mysql-connector-java'
         testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
         implementation 'org.springframework.boot:spring-boot-starter-undertow'
-        implementation 'org.springframework.security:spring-security-core'
     }
 }
 
