@@ -8,7 +8,7 @@ buildscript {
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
-        classpath "io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.10.RELEASE"
         classpath "org.asciidoctor:asciidoctor-gradle-jvm:2.4.0"
     }
 }
@@ -56,6 +56,7 @@ subprojects {
         testImplementation 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
         testAnnotationProcessor 'org.projectlombok:lombok'
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
             exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
         }
@@ -69,7 +70,6 @@ subprojects {
 project(':picktime-core') {
     dependencies {
         implementation 'org.apache.httpcomponents:httpclient'
-        implementation 'org.springframework.boot:spring-boot-configuration-processor'
         implementation 'javax.servlet:javax.servlet-api:4.0.1'
         implementation 'org.springframework.security:spring-security-core'
     }
@@ -96,6 +96,10 @@ project(":picktime-core-domain") {
         implementation 'org.mybatis:mybatis-typehandlers-jsr310:1.0.2'
         implementation 'org.springframework.security:spring-security-core'
         implementation 'com.amazonaws:aws-java-sdk-s3:1.11.896'
+    }
+
+    task deleteCoreDomainGeneratedSources {
+        delete 'src/main/generated'
     }
 }
 
