@@ -115,6 +115,8 @@ project(':picktime-app-web-api') {
         implementation 'mysql:mysql-connector-java'
         testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
         implementation 'org.springframework.boot:spring-boot-starter-undertow'
+        implementation 'javax.xml.bind:jaxb-api:2.3.1'
+        implementation 'com.akamai:edgeauth:0.2.0'
     }
 }
 
