@@ -5,7 +5,7 @@ include ('picktime-webapp')
 include ('picktime-app-web-api')
 
 // Admin
-//include ('picktime-app-web-admin')
+include ('picktime-app-web-admin')
 
 // Batch
 include('picktime-app-batch')
