@@ -1,5 +1,4 @@
 /*********************** Project Include ***********************/
-
 // Web
 include ('picktime-webapp')
 include ('picktime-app-web-api')
@@ -7,15 +6,10 @@ include ('picktime-app-web-api')
 // Admin
 include ('picktime-app-web-admin')
 
-// Batch
-include('picktime-app-batch')
-
 // Core
 include('picktime-core')
 include('picktime-core-payment')
 include('picktime-core-domain')
-
-
 /*********************** Project Include ***********************/
 
 /*********************** Create Project ***********************/
@@ -23,5 +17,4 @@ rootProject.children.each { project ->
     project.projectDir = new File("../${project.name}")
 }
 /*********************** Create Project ***********************/
-include 'picktime-core-payment'
 

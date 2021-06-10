@@ -137,18 +137,3 @@ project(':picktime-app-web-admin') {
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
     }
 }
-
-project(":picktime-app-batch") {
-    classes.dependsOn ':picktime-core:build'
-    classes.dependsOn ':picktime-core-domain:build'
-    dependencies {
-        implementation project(':picktime-core')
-        implementation project(':picktime-core-domain')
-        implementation files('libs/instagram-crawler.jar')
-        //implementation 'com.github.igor-suhorukov:instagramscraper:2.2'
-        implementation 'mysql:mysql-connector-java'
-        implementation 'org.springframework.boot:spring-boot-starter-batch'
-        implementation 'org.springframework.boot:spring-boot-starter-undertow'
-        testImplementation 'org.springframework.batch:spring-batch-test'
-    }
-}
