@@ -82,7 +82,6 @@ project(':picktime-core-payment') {
 
     dependencies {
         implementation project(':picktime-core')
-        implementation project(':picktime-core-domain')
         implementation 'commons-codec:commons-codec'
         api 'org.springframework.boot:spring-boot-starter-validation'
     }
