@@ -113,6 +113,7 @@ project(':picktime-app-web-api') {
         implementation project(':picktime-core-domain')
         implementation project(':picktime-core-payment')
         implementation 'mysql:mysql-connector-java'
+        implementation 'org.springframework.boot:spring-boot-starter-security'
         testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
         implementation 'org.springframework.boot:spring-boot-starter-undertow'
     }
