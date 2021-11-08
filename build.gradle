@@ -136,5 +136,7 @@ project(':picktime-app-web-admin') {
         implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
         implementation 'org.springframework.boot:spring-boot-starter-security'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        implementation 'org.apache.poi:poi:5.0.0'
+        implementation 'org.apache.poi:poi-ooxml:5.0.0'
     }
 }
