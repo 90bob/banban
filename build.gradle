@@ -141,3 +141,11 @@ project(':picktime-app-web-admin') {
         implementation 'org.apache.poi:poi-ooxml:5.0.0'
     }
 }
+
+project(':picktime-data-search') {
+    dependencies {
+        implementation 'mysql:mysql-connector-java'
+        implementation 'org.springframework.boot:spring-boot-starter-undertow'
+        implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+    }
+}

@@ -1,15 +1,18 @@
 /*********************** Project Include ***********************/
 // Web
-include ('picktime-webapp')
-include ('picktime-app-web-api')
+include('picktime-webapp')
+include('picktime-app-web-api')
 
 // Admin
-include ('picktime-app-web-admin')
+include('picktime-app-web-admin')
 
 // Core
 include('picktime-core')
 include('picktime-core-payment')
 include('picktime-core-domain')
+
+// Search
+include('picktime-data-search')
 /*********************** Project Include ***********************/
 
 /*********************** Create Project ***********************/
