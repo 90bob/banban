@@ -116,7 +116,9 @@ project(':picktime-app-web-api') {
         implementation 'mysql:mysql-connector-java'
         implementation 'org.springframework.boot:spring-boot-starter-security'
         testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-        implementation 'org.springframework.boot:spring-boot-starter-undertow'
+        implementation('org.springframework.boot:spring-boot-starter-undertow') {
+            exclude group: 'io.undertow', module: 'undertow-websockets-jsr'
+        }
         implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     }
 }
@@ -133,7 +135,9 @@ project(':picktime-app-web-admin') {
         implementation 'mysql:mysql-connector-java'
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'com.github.zhanhb:thymeleaf-layout-dialect:2.4.1'
-        implementation 'org.springframework.boot:spring-boot-starter-undertow'
+        implementation('org.springframework.boot:spring-boot-starter-undertow') {
+            exclude group: 'io.undertow', module: 'undertow-websockets-jsr'
+        }
         implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
         implementation 'org.springframework.boot:spring-boot-starter-security'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
